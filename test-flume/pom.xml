@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.hundun</groupId>
+		<artifactId>JavaTestProject</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<groupId>com.hundun.flume</groupId>
+	<artifactId>test-flume</artifactId>
+	<name>test-flume</name>
+	<url>http://maven.apache.org</url>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<flume.version>1.8.0</flume.version>
+	</properties>
+	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.flume/flume-ng-core -->
+		<dependency>
+			<groupId>org.apache.flume</groupId>
+			<artifactId>flume-ng-core</artifactId>
+			<version>${flume.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.flume/flume-ng-sdk -->
+		<dependency>
+			<groupId>org.apache.flume</groupId>
+			<artifactId>flume-ng-sdk</artifactId>
+			<version>${flume.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.flume/flume-ng-configuration -->
+		<dependency>
+			<groupId>org.apache.flume</groupId>
+			<artifactId>flume-ng-configuration</artifactId>
+			<version>${flume.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<sourceDirectory>./src/main/java</sourceDirectory>
+		<testSourceDirectory>./src/main/test</testSourceDirectory>
+	</build>
+
+</project>

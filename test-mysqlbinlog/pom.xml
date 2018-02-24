@@ -8,17 +8,18 @@
 		<artifactId>JavaTestProject</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+
 	<groupId>com.hundun.mysqlbinlog</groupId>
 	<artifactId>test-mysqlbinlog</artifactId>
 	<name>test-mysqlbinlog</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<mysqlbinlog.version>0.13.0</mysqlbinlog.version>
 		<fastjson.version>1.2.41</fastjson.version>
 		<open-replicator.version>1.1.1</open-replicator.version>
+		<canal.version>1.0.12</canal.version>
 	</properties>
 	<dependencies>
 
@@ -38,6 +39,12 @@
 			<groupId>com.zendesk</groupId>
 			<artifactId>open-replicator</artifactId>
 			<version>${open-replicator.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba.otter</groupId>
+			<artifactId>canal.client</artifactId>
+			<version>${canal.version}</version>
 		</dependency>
 
 	</dependencies>

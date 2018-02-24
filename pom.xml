@@ -50,5 +50,6 @@
 		<module>test-gps</module>
 		<module>test-common</module>
     <module>test-mysqlbinlog</module>
+    <module>test-flume</module>
   </modules>
 </project>
