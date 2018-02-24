@@ -52,5 +52,6 @@
     <module>test-mysqlbinlog</module>
     <module>test-flume</module>
     <module>test-kafka</module>
+    <module>test-zookeeper</module>
   </modules>
 </project>
