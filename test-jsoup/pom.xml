@@ -44,6 +44,12 @@
 			<version>3.4.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.hundun.common</groupId>
+			<artifactId>test-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
