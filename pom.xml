@@ -51,5 +51,6 @@
 		<module>test-common</module>
     <module>test-mysqlbinlog</module>
     <module>test-flume</module>
+    <module>test-kafka</module>
   </modules>
 </project>
