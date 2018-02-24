@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.hundun</groupId>
+		<artifactId>JavaTestProject</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.hundun.jsoup</groupId>
+	<artifactId>test-jsoup</artifactId>
+	<name>test-jsoup</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jsoup.version>1.8.3</jsoup.version>
+	</properties>
+	<dependencies>
+
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>${jsoup.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.hundun.common</groupId>
+			<artifactId>test-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<sourceDirectory>./src/main/java</sourceDirectory>
+		<testOutputDirectory>./src/test/java</testOutputDirectory>
+	</build>
+
+</project>
