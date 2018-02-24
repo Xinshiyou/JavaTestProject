@@ -55,5 +55,6 @@
     <module>test-zookeeper</module>
     <module>test-jsoup</module>
     <module>test-java</module>
+    <module>test-scp</module>
   </modules>
 </project>
