@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.hundun</groupId>
+		<artifactId>JavaTestProject</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<groupId>com.hundun.mysqlbinlog</groupId>
+	<artifactId>test-mysqlbinlog</artifactId>
+	<name>test-mysqlbinlog</name>
+	<url>http://maven.apache.org</url>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<mysqlbinlog.version>0.13.0</mysqlbinlog.version>
+		<fastjson.version>1.2.41</fastjson.version>
+		<open-replicator.version>1.1.1</open-replicator.version>
+	</properties>
+	<dependencies>
+
+		<dependency>
+			<groupId>com.github.shyiko</groupId>
+			<artifactId>mysql-binlog-connector-java</artifactId>
+			<version>${mysqlbinlog.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.zendesk</groupId>
+			<artifactId>open-replicator</artifactId>
+			<version>${open-replicator.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<sourceDirectory>./src/main/java</sourceDirectory>
+		<testSourceDirectory>./src/main/test</testSourceDirectory>
+	</build>
+
+
+</project>
