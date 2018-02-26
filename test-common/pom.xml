@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.hundun</groupId>
 		<artifactId>JavaTestProject</artifactId>
-		<version>${project.version}</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.hundun.common</groupId>
 	<artifactId>test-common</artifactId>

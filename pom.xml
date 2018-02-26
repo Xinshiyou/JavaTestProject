@@ -56,5 +56,6 @@
     <module>test-jsoup</module>
     <module>test-java</module>
     <module>test-scp</module>
+    <module>test-hive</module>
   </modules>
 </project>
