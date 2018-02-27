@@ -57,5 +57,6 @@
     <module>test-java</module>
     <module>test-scp</module>
     <module>test-hive</module>
+    <module>test-rockmq2kafka</module>
   </modules>
 </project>
