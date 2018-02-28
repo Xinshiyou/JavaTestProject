@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hundun</groupId>
 	<artifactId>JavaTestProject</artifactId>
@@ -49,14 +50,14 @@
 		<module>test-otter</module>
 		<module>test-gps</module>
 		<module>test-common</module>
-    <module>test-mysqlbinlog</module>
-    <module>test-flume</module>
-    <module>test-kafka</module>
-    <module>test-zookeeper</module>
-    <module>test-jsoup</module>
-    <module>test-java</module>
-    <module>test-scp</module>
-    <module>test-hive</module>
-    <module>test-rockmq2kafka</module>
-  </modules>
+		<module>test-mysqlbinlog</module>
+		<module>test-flume</module>
+		<module>test-kafka</module>
+		<module>test-zookeeper</module>
+		<module>test-jsoup</module>
+		<module>test-java</module>
+		<module>test-scp</module>
+		<module>test-hive</module>
+		<module>test-rockmq2kafka</module>
+	</modules>
 </project>

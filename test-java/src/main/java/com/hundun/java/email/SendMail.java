@@ -30,10 +30,10 @@ public class SendMail {
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", smtpHost);
-		props.put("mail.smtp.starttls.enable", "true");// 使用 STARTTLS安全连接
-		props.put("mail.smtp.port", "465"); // google使用465或587端口
-		props.put("mail.smtp.socketFactory.port", "465");
-		props.put("mail.smtp.socketFactory.class", SSL_FACTORY);
+		//props.put("mail.smtp.starttls.enable", "true");// 使用 STARTTLS安全连接
+		props.put("mail.smtp.port", "25"); // google使用465或587端口
+		// props.put("mail.smtp.socketFactory.port", "465");
+		// props.put("mail.smtp.socketFactory.class", SSL_FACTORY);
 		props.put("mail.smtp.socketFactory.fallback", "false");
 		props.put("mail.smtp.auth", "true"); // 使用验证
 		Session mailSession = Session.getInstance(props, new EmailAuthenticator(from, fromUserPassword));
