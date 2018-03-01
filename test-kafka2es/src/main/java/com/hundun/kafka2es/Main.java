@@ -6,7 +6,13 @@ package com.hundun.kafka2es;
  */
 public class Main {
 
+	/**
+	 * @DESC : <br>
+	 *       1, extract data from kafka;<br>
+	 *       2, push data to ES by ES client<br>
+	 * @param args
+	 */
+
 	public static void main(String[] args) {
-		System.out.println("Hello World!");
 	}
 }

@@ -30,12 +30,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>${fastjson.version}</version>
-		</dependency>
-
-		<dependency>
 			<groupId>com.zendesk</groupId>
 			<artifactId>open-replicator</artifactId>
 			<version>${open-replicator.version}</version>
