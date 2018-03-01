@@ -43,7 +43,7 @@
 			<version>1.7.5</version>
 		</dependency>
 	</dependencies>
-
+	
 	<modules>
 		<module>test-odps</module>
 		<module>test-otter</module>
