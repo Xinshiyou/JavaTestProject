@@ -8,10 +8,12 @@
 		<artifactId>JavaTestProject</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	
 	<groupId>com.hundun.kafka</groupId>
 	<artifactId>test-kafka</artifactId>
 	<name>test-kafka</name>
 	<url>http://maven.apache.org</url>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<kafka.version>0.11.0.0</kafka.version>
