@@ -1,7 +1,7 @@
 package com.hundun.kafka.utils;
 
 /**
- * @DESC
+ * @DESC constant utils
  * @author xinshiyou
  */
 public class ConstantUtil {

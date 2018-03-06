@@ -10,36 +10,35 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.hundun.kafka</groupId>
-	<artifactId>test-kafka</artifactId>
-	<name>test-kafka</name>
+	<groupId>com.hundun.rpc</groupId>
+	<artifactId>test-rpc</artifactId>
+	<name>test-rpc</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<kafka.version>0.9.0.0</kafka.version>
-		<mysql.verion>5.1.37</mysql.verion>
-		<project.verion>0.0.1-SNAPSHOT</project.verion>
+		<grpc.version>1.9.0</grpc.version>
+		<protobuf.version>3.4.0</protobuf.version>
 	</properties>
-	
+
 	<dependencies>
 
 		<dependency>
-			<groupId>org.apache.kafka</groupId>
-			<artifactId>kafka-clients</artifactId>
-			<version>${kafka.version}</version>
+			<groupId>io.grpc</groupId>
+			<artifactId>grpc-all</artifactId>
+			<version>${grpc.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.hundun.common</groupId>
-			<artifactId>test-common</artifactId>
-			<version>${project.verion}</version>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>${protobuf.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.verion}</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>2.4.2</version>
 		</dependency>
 
 	</dependencies>

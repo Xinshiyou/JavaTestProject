@@ -57,7 +57,6 @@ public class KafkaProducer {
 				executorService.submit(new KafkaConsumerThread(records, consumer));
 			}
 		}
-
 	}
 
 	public void shutdown() {

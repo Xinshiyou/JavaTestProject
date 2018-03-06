@@ -14,7 +14,9 @@ import com.alibaba.fastjson.JSON;
 @SuppressWarnings("serial")
 public class DataEntity implements Serializable {
 
-	protected static final Logger logger = Logger.getLogger(DataEntity.class);
+	/** global logger */
+	protected transient static final Logger logger = Logger.getLogger(DataEntity.class);
+
 	public String dbName = null;// database name
 	public String tabName = null;// table name
 	public String type = null;// SQL[create,drop] or delete,insert,update
@@ -26,7 +28,12 @@ public class DataEntity implements Serializable {
 	/** serializable */
 	@Override
 	public String toString() {
-		return JSON.toJSONString(this);
+		try {
+			return JSON.toJSONString(this);
+		} catch (Exception e) {
+			logger.error("Serialize failed!", e);
+			return null;
+		}
 	}
 
 	/** deserializable */
@@ -35,10 +42,9 @@ public class DataEntity implements Serializable {
 		try {
 			return JSON.parseObject(input, DataEntity.class);
 		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
+			logger.error("Deserialize failed!", e);
+			return null;
 		}
-
-		return null;
 
 	}
 

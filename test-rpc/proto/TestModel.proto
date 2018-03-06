@@ -1,0 +1,10 @@
+syntax = "proto3";  
+package com.test.grpc;  
+option java_package = "com.test.grpc.service.model";  
+message TestRequest{  
+    string name  = 1;  
+    int32 id    = 2;  
+}  
+message TestResponse{  
+    string message = 1;  
+}  
