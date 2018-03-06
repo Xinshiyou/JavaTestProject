@@ -6,12 +6,12 @@ package com.hundun.kafka.utils;
  */
 public class ConstantUtil {
 
-	public static final String KAFKA_CONFIG = "kafka.properties";
-	public static final String MYSQL_CONFIG = "mysql.properties";
+	public static final String KAFKA_CONFIG = "/kafka.properties";
+	public static final String MYSQL_CONFIG = "/mysql.properties";
 
 	/** kafka properties */
 	public static final String KAFKA_BROKBER_LIST = "kafka.broker.list";
-	public static final String KAFKA_GROUP_ID = "kafka.consumer.group.id=binlog-consumer-ddl";
+	public static final String KAFKA_GROUP_ID = "kafka.consumer.group.id";
 	public static final String KAFKA_AUTO_COMMIT = "enable.auto.commit";
 
 	/** zookeeper properties */
