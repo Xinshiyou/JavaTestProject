@@ -44,6 +44,13 @@ public class JDBCUtil {
 		getConnection(url, userName, passwd);
 	}
 
+	/**
+	 * @DESC
+	 * @param url
+	 * @param userName
+	 * @param passwd
+	 * @return
+	 */
 	private Connection getConnection(String url, String userName, String passwd) {
 		try {
 			connection = DriverManager.getConnection(url, userName, passwd);
@@ -51,6 +58,20 @@ public class JDBCUtil {
 			logger.error("DriverManager get connection failed!", e);
 		}
 		return connection;
+	}
+
+	/**
+	 * @DESC
+	 */
+	public boolean insertStatement(String sql, List<Object> params) throws SQLException {
+		pstmt = connection.prepareStatement(sql);
+		int index = 1;
+		if (params != null && !params.isEmpty()) {
+			for (int i = 0; i < params.size(); i++) {
+				pstmt.setObject(index++, params.get(i));
+			}
+		}
+		return pstmt.execute();
 	}
 
 	/**

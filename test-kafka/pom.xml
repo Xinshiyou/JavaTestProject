@@ -8,21 +8,23 @@
 		<artifactId>JavaTestProject</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+
 	<groupId>com.hundun.kafka</groupId>
 	<artifactId>test-kafka</artifactId>
 	<name>test-kafka</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<kafka.version>0.11.0.0</kafka.version>
+		<kafka.version>0.9.0.0</kafka.version>
+		<mysql.verion>5.1.37</mysql.verion>
+		<project.verion>0.0.1-SNAPSHOT</project.verion>
 	</properties>
 	<dependencies>
 
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
-			<artifactId>kafka_2.11</artifactId>
+			<artifactId>kafka_2.10</artifactId>
 			<version>${kafka.version}</version>
 		</dependency>
 
@@ -32,12 +34,32 @@
 			<version>${kafka.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.hundun.common</groupId>
+			<artifactId>test-common</artifactId>
+			<version>${project.verion}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.verion}</version>
+		</dependency>
+
 	</dependencies>
 
 
 	<build>
 		<sourceDirectory>./src/main/java</sourceDirectory>
 		<testSourceDirectory>./src/main/test</testSourceDirectory>
+		<resources>
+			<resource>
+				<directory>./src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>./src/test/resources</directory>
+			</resource>
+		</resources>
 	</build>
 
 </project>
