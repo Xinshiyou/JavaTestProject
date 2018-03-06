@@ -77,6 +77,7 @@ public class OWOKafkaConsumer {
 			ConsumerRecords<String, String> records = consumer.poll(5000);
 			records.forEach(item -> {
 				String content = item.value();
+				logger.debug("read message from kafka : " + item);
 				if (null != content && content.toLowerCase().contains("sql")) {
 					DataEntity entity = DataEntity.parse(content);
 					List<Object> datas = new ArrayList<Object>();
