@@ -57,6 +57,7 @@ public class JDBCUtil {
 		} catch (SQLException e) {
 			logger.error("DriverManager get connection failed!", e);
 		}
+		
 		return connection;
 	}
 

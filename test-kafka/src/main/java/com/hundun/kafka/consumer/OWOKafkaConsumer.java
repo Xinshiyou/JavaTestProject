@@ -64,6 +64,9 @@ public class OWOKafkaConsumer {
 		props.put("session.timeout.ms", "5000");// Consumer向集群发送自己的心跳，超时则认为Consumer已经死了，kafka会把它的分区分配给其他进程
 		props.put("key.deserializer", StringDeserializer.class.getName());
 		props.put("value.deserializer", StringDeserializer.class.getName());
+		props.put("zookeeper.session.timeout.ms", "400");
+		props.put("zookeeper.sync.time.ms", "200");
+		props.put("auto.commit.interval.ms", "1000");
 
 	}
 
@@ -74,8 +77,17 @@ public class OWOKafkaConsumer {
 
 		final KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
 		consumer.subscribe(Arrays.asList("crawler_test"));
+
+		/** add shutdown hook */
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+			@Override
+			public void run() {
+				release(jdbc, consumer);
+			}
+		}));
+
 		while (flag) {
-			
+
 			ConsumerRecords<String, String> records = consumer.poll(5000);
 			System.out.println("Consumer Records: " + records.count());
 			records.forEach(item -> {
@@ -100,29 +112,10 @@ public class OWOKafkaConsumer {
 					}
 				}
 			});
+
 		}
 
-		try {
-			consumer.close();
-			jdbc.releaseConn();
-		} catch (Exception e) {
-			logger.error("Failed release connection to mysql databases", e);
-		}
-
-		/** add shutdown hook */
-		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					consumer.close();
-				} catch (Exception e) {
-				}
-				try {
-					jdbc.releaseConn();
-				} catch (Exception e) {
-				}
-			}
-		}));
+		release(jdbc, consumer);
 
 	}
 
@@ -145,6 +138,20 @@ public class OWOKafkaConsumer {
 		flag = false;
 		synchronized (this) {
 			notifyAll();
+		}
+	}
+
+	/** release connection and resources */
+	private static void release(final JDBCUtil jdbc, final KafkaConsumer<String, String> consumer) {
+		try {
+			consumer.close();
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		try {
+			jdbc.releaseConn();
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
 		}
 	}
 

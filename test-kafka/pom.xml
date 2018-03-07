@@ -21,12 +21,12 @@
 		<mysql.verion>5.1.37</mysql.verion>
 		<project.verion>0.0.1-SNAPSHOT</project.verion>
 	</properties>
-	
+
 	<dependencies>
 
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
-			<artifactId>kafka-clients</artifactId>
+			<artifactId>kafka_2.10</artifactId>
 			<version>${kafka.version}</version>
 		</dependency>
 
