@@ -13,6 +13,7 @@ public class ConstantUtil {
 	public static final String KAFKA_BROKBER_LIST = "kafka.broker.list";
 	public static final String KAFKA_GROUP_ID = "kafka.consumer.group.id";
 	public static final String KAFKA_AUTO_COMMIT = "enable.auto.commit";
+	public static final String KAFKA_TOPIC_NAME = "kafka.topic.name";
 
 	/** zookeeper properties */
 	public static final String ZK_SERVER = "zookeeper.server";

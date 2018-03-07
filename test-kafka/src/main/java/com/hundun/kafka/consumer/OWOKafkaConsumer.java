@@ -18,7 +18,7 @@ import com.hundun.kafka.entity.DataEntity;
 import com.hundun.kafka.utils.ConstantUtil;
 
 /**
- * @DESC main class
+ * @DESC main class : kafka simple Java API
  * @author xinshiyou
  */
 public class OWOKafkaConsumer {
@@ -85,11 +85,9 @@ public class OWOKafkaConsumer {
 				release(jdbc, consumer);
 			}
 		}));
-
+		
 		while (flag) {
-
 			ConsumerRecords<String, String> records = consumer.poll(5000);
-			System.out.println("Consumer Records: " + records.count());
 			records.forEach(item -> {
 				String content = item.value();
 				System.out.println("read message from kafka : " + content);
@@ -112,7 +110,6 @@ public class OWOKafkaConsumer {
 					}
 				}
 			});
-
 		}
 
 		release(jdbc, consumer);
@@ -143,6 +140,7 @@ public class OWOKafkaConsumer {
 
 	/** release connection and resources */
 	private static void release(final JDBCUtil jdbc, final KafkaConsumer<String, String> consumer) {
+		
 		try {
 			consumer.close();
 		} catch (Exception e) {
@@ -153,6 +151,7 @@ public class OWOKafkaConsumer {
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
+		
 	}
 
 }
