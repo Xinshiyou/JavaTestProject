@@ -10,6 +10,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * @DESC send email
+ * @author xinshiyou
+ */
 public class SendMail {
 
 	private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
@@ -28,19 +32,18 @@ public class SendMail {
 	public static void sendMessage(String smtpHost, String from, String fromUserPassword, String to, String subject,
 			String messageText, String messageType) throws MessagingException {
 
+		// 第一步： 配置参数
 		Properties props = new Properties();
 		props.put("mail.smtp.host", smtpHost);
-		//props.put("mail.smtp.starttls.enable", "true");// 使用 STARTTLS安全连接
-		props.put("mail.smtp.port", "25"); // google使用465或587端口
-		// props.put("mail.smtp.socketFactory.port", "465");
-		// props.put("mail.smtp.socketFactory.class", SSL_FACTORY);
+		props.put("mail.smtp.starttls.enable", "true");// 使用 STARTTLS安全连接
+		props.put("mail.smtp.port", "465"); // google使用465或587端口
+		props.put("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.socketFactory.class", SSL_FACTORY);
 		props.put("mail.smtp.socketFactory.fallback", "false");
 		props.put("mail.smtp.auth", "true"); // 使用验证
 		Session mailSession = Session.getInstance(props, new EmailAuthenticator(from, fromUserPassword));
 
 		// 第二步：编写消息
-		System.out.println("编写消息from——to:" + from + "——" + to);
-
 		InternetAddress fromAddress = new InternetAddress(from);
 		InternetAddress toAddress = new InternetAddress(to);
 		MimeMessage message = new MimeMessage(mailSession);

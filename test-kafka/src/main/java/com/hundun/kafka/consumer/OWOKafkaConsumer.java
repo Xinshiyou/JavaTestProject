@@ -74,9 +74,9 @@ public class OWOKafkaConsumer {
 
 		// initialize jdbc connection
 		final JDBCUtil jdbc = init();
-
+		final String topic = PropertiesUtil.getProperty(configPrefix + ConstantUtil.KAFKA_CONFIG, ConstantUtil.KAFKA_TOPIC_NAME);
 		final KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
-		consumer.subscribe(Arrays.asList("crawler_test"));
+		consumer.subscribe(Arrays.asList(topic));
 
 		/** add shutdown hook */
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
@@ -90,7 +90,7 @@ public class OWOKafkaConsumer {
 			ConsumerRecords<String, String> records = consumer.poll(5000);
 			records.forEach(item -> {
 				String content = item.value();
-				System.out.println("read message from kafka : " + content);
+				logger.debug("read message from kafka : " + content);
 				if (null != content && content.toLowerCase().contains("sql")) {
 
 					DataEntity entity = DataEntity.parse(content);
@@ -103,6 +103,7 @@ public class OWOKafkaConsumer {
 					datas.add(System.currentTimeMillis());// event time
 
 					try {
+						logger.info("Write to DB:"+content);
 						jdbc.insertStatement(SQL, datas);
 					} catch (Exception e) {
 						logger.error("Failed insert data to mysql databases", e);

@@ -34,6 +34,7 @@ public class OWOKafkaStreamConsumer {
 	private static final Logger logger = Logger.getLogger(OWOKafkaStreamConsumer.class);
 	private static Properties props = new Properties();
 	private static String configPrefix = "./src/main/resources";
+	private static volatile boolean flag = true;
 
 	static {
 
@@ -75,7 +76,6 @@ public class OWOKafkaStreamConsumer {
 
 	}
 
-	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		final JDBCUtil jdbc = init();
@@ -98,27 +98,42 @@ public class OWOKafkaStreamConsumer {
 		KafkaStream<byte[], byte[]> stream = consumerMap.get(topic).get(0);
 		ConsumerIterator<byte[], byte[]> it = stream.iterator();
 
-		while (it.hasNext()) {
-			String content = new String(it.next().message());
-			if (null != content && content.toLowerCase().contains("sql")) {
+		while (flag) {
 
-				DataEntity entity = DataEntity.parse(content);
-				List<Object> datas = new ArrayList<Object>();
-				if (entity.sql == null || entity.sql.trim().length() < 1)
-					return;
-				datas.add(entity.dbName);// schema name
-				datas.add(entity.sql);// stmt sql
-				datas.add(System.currentTimeMillis());// event time
+			while (it.hasNext()) {
+				String content = new String(it.next().message());
+				logger.info("Item:\n" + content);
+				if (null != content && content.toLowerCase().contains("sql")) {
 
-				try {
-					logger.debug("Insert one data into mysql: " + entity.toString());
-					jdbc.insertStatement(SQL, datas);
-				} catch (Exception e) {
-					logger.error("Failed insert data to mysql databases", e);
+					DataEntity entity = DataEntity.parse(content);
+					List<Object> datas = new ArrayList<Object>();
+					if (entity.sql == null || entity.sql.trim().length() < 1)
+						return;
+
+					datas.add(entity.dbName);// schema name
+					datas.add(entity.sql);// stmt sql
+					datas.add(System.currentTimeMillis());// event time
+
+					try {
+						logger.debug("Insert one data into mysql: " + entity.toString());
+						jdbc.insertStatement(SQL, datas);
+					} catch (Exception e) {
+						logger.error("Failed insert data to mysql databases", e);
+					}
 				}
 			}
 		}
+
 		release(jdbc, consumer);
+
+	}
+
+	/** quit loop process */
+	public void shutdown() {
+		flag = false;
+		synchronized (this) {
+			notifyAll();
+		}
 	}
 
 	/** initialize mysql connection */
