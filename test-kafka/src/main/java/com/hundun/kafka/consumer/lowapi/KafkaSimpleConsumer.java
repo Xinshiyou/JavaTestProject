@@ -95,6 +95,11 @@ public class KafkaSimpleConsumer {
 			return -1;
 		}
 
+		if (passwd == null) {
+			logger.error("get mysql configure messages failed!");
+			return -1;
+		}
+
 		jdbc = new JDBCUtil();
 		jdbc.initConnection(url, userName, passwd);
 

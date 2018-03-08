@@ -20,6 +20,13 @@
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>com.hundun.common</groupId>
+			<artifactId>test-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 		<!-- java cglib -->
 		<dependency>
 			<groupId>cglib</groupId>
@@ -57,5 +64,14 @@
 	<build>
 		<sourceDirectory>./src/main/java</sourceDirectory>
 		<testSourceDirectory>./src/test/java</testSourceDirectory>
+		<resources>
+			<resource>
+				<directory>./src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>./src/test/resources</directory>
+			</resource>
+		</resources>
+
 	</build>
 </project>

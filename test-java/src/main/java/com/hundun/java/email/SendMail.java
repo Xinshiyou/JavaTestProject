@@ -36,19 +36,26 @@ public class SendMail {
 		Properties props = new Properties();
 		props.put("mail.smtp.host", smtpHost);
 		props.put("mail.smtp.starttls.enable", "true");// 使用 STARTTLS安全连接
-		props.put("mail.smtp.port", "465"); // google使用465或587端口
-		props.put("mail.smtp.socketFactory.port", "465");
-		props.put("mail.smtp.socketFactory.class", SSL_FACTORY);
+		props.put("mail.smtp.port", "587"); // google使用465或587端口
+		// props.put("mail.smtp.socketFactory.port", "587");
+		//props.put("mail.smtp.socketFactory.class", SSL_FACTORY);
 		props.put("mail.smtp.socketFactory.fallback", "false");
 		props.put("mail.smtp.auth", "true"); // 使用验证
 		Session mailSession = Session.getInstance(props, new EmailAuthenticator(from, fromUserPassword));
 
 		// 第二步：编写消息
 		InternetAddress fromAddress = new InternetAddress(from);
-		InternetAddress toAddress = new InternetAddress(to);
 		MimeMessage message = new MimeMessage(mailSession);
 		message.setFrom(fromAddress);
-		message.addRecipient(RecipientType.TO, toAddress);
+
+		String[] tos = to.split(",");
+		InternetAddress[] toAdds = new InternetAddress[tos.length];
+		InternetAddress toAddress = null;
+		for (int i = 0; i < tos.length; i++) {
+			toAddress = new InternetAddress(tos[i]);
+			toAdds[i] = toAddress;
+		}
+		message.addRecipients(RecipientType.TO, toAdds);
 
 		message.setSentDate(Calendar.getInstance().getTime());
 		message.setSubject(subject);
