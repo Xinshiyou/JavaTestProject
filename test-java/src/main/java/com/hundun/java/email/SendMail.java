@@ -1,5 +1,6 @@
 package com.hundun.java.email;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 import java.util.Properties;
 
@@ -9,6 +10,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 
 /**
  * @DESC send email
@@ -17,6 +19,7 @@ import javax.mail.internet.MimeMessage;
 public class SendMail {
 
 	private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+	private static final String FORM_NAME = "临时邮件通知中心";
 
 	/**
 	 * @DESC send email
@@ -28,9 +31,10 @@ public class SendMail {
 	 * @param messageText
 	 * @param messageType
 	 * @throws MessagingException
+	 * @throws UnsupportedEncodingException
 	 */
 	public static void sendMessage(String smtpHost, String from, String fromUserPassword, String to, String subject,
-			String messageText, String messageType) throws MessagingException {
+			String messageText, String messageType) throws MessagingException, UnsupportedEncodingException {
 
 		// 第一步： 配置参数
 		Properties props = new Properties();
@@ -38,13 +42,14 @@ public class SendMail {
 		props.put("mail.smtp.starttls.enable", "true");// 使用 STARTTLS安全连接
 		props.put("mail.smtp.port", "587"); // google使用465或587端口
 		// props.put("mail.smtp.socketFactory.port", "587");
-		//props.put("mail.smtp.socketFactory.class", SSL_FACTORY);
+		// props.put("mail.smtp.socketFactory.class", SSL_FACTORY);
 		props.put("mail.smtp.socketFactory.fallback", "false");
 		props.put("mail.smtp.auth", "true"); // 使用验证
 		Session mailSession = Session.getInstance(props, new EmailAuthenticator(from, fromUserPassword));
+		mailSession.setDebug(true);
 
 		// 第二步：编写消息
-		InternetAddress fromAddress = new InternetAddress(from);
+		InternetAddress fromAddress = new InternetAddress(MimeUtility.encodeText(FORM_NAME) + "<" + from + ">");
 		MimeMessage message = new MimeMessage(mailSession);
 		message.setFrom(fromAddress);
 
@@ -56,7 +61,6 @@ public class SendMail {
 			toAdds[i] = toAddress;
 		}
 		message.addRecipients(RecipientType.TO, toAdds);
-
 		message.setSentDate(Calendar.getInstance().getTime());
 		message.setSubject(subject);
 		message.setContent(messageText, messageType);
