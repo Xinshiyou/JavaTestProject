@@ -69,6 +69,7 @@ public class SendMail {
 		Transport transport = mailSession.getTransport("smtp");
 		transport.connect(smtpHost, from, fromUserPassword);
 		Transport.send(message, message.getRecipients(RecipientType.TO));
+		transport.close();
 		System.out.println("message yes");
 	}
 
