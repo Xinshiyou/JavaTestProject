@@ -18,6 +18,7 @@ import org.apache.log4j.Logger;
 
 /**
  * @DESC 简单邮件（不带附件的邮件）发送器
+ * @author xinshiyou
  */
 public class SimpleMailSender {
 

@@ -18,7 +18,7 @@ import javax.mail.internet.MimeUtility;
  */
 public class SendMail {
 
-	private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+	// private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
 	private static final String FORM_NAME = "临时邮件通知中心";
 
 	/**

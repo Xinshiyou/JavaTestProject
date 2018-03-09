@@ -3,6 +3,10 @@ package com.hundun.java.email;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
+/**
+ * @DESC email authenticator
+ * @author xinshiyou
+ */
 public class EmailAuthenticator extends Authenticator {
 
 	String userName = null;

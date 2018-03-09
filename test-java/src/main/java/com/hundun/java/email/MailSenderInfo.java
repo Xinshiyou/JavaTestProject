@@ -6,7 +6,7 @@ package com.hundun.java.email;
 import java.util.Properties;
 
 /**
- * @DESC
+ * @DESC mail sender infos
  * @author xinshiyou
  */
 public class MailSenderInfo {
