@@ -1,8 +1,0 @@
-syntax = "proto2";  
-package com.test.grpc;  
-option java_package = "com.test.grpc.service";  
-import "TestModel.proto";  
-service TestRpcService{  
-    rpc sayHello(TestRequest) returns (TestResponse);  
-}  
-

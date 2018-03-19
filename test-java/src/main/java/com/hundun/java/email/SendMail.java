@@ -19,7 +19,7 @@ import javax.mail.internet.MimeUtility;
 public class SendMail {
 
 	// private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
-	private static final String FORM_NAME = "临时邮件通知中心";
+	private static final String FORM_NAME = "辛世友";
 
 	/**
 	 * @DESC send email
@@ -46,7 +46,7 @@ public class SendMail {
 		props.put("mail.smtp.socketFactory.fallback", "false");
 		props.put("mail.smtp.auth", "true"); // 使用验证
 		Session mailSession = Session.getInstance(props, new EmailAuthenticator(from, fromUserPassword));
-		mailSession.setDebug(true);
+		// mailSession.setDebug(true);
 
 		// 第二步：编写消息
 		InternetAddress fromAddress = new InternetAddress(MimeUtility.encodeText(FORM_NAME) + "<" + from + ">");

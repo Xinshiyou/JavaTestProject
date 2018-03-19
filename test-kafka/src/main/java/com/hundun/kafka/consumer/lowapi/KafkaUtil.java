@@ -64,7 +64,7 @@ public class KafkaUtil {
 			// seedBrokers.add(seed.host());
 			// }
 		}
-		
+
 		return returnMeataData;
 	}
 
