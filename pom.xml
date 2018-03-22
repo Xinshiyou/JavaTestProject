@@ -78,5 +78,6 @@
 		<module>test-rockmq2kafka</module>
 		<module>test-kafka2es</module>
     <module>test-rpc</module>
+    <module>test-python</module>
   </modules>
 </project>

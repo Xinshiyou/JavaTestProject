@@ -18,8 +18,9 @@ import javax.mail.internet.MimeUtility;
  */
 public class SendMail {
 
-	// private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
-	private static final String FORM_NAME = "辛世友";
+	// private static final String SSL_FACTORY =
+	// "javax.net.ssl.SSLSocketFactory";
+	static String FORM_NAME = null;
 
 	/**
 	 * @DESC send email
@@ -43,7 +44,7 @@ public class SendMail {
 		props.put("mail.smtp.port", "587"); // google使用465或587端口
 		// props.put("mail.smtp.socketFactory.port", "587");
 		// props.put("mail.smtp.socketFactory.class", SSL_FACTORY);
-		props.put("mail.smtp.socketFactory.fallback", "false");
+		// props.put("mail.smtp.socketFactory.fallback", "false");
 		props.put("mail.smtp.auth", "true"); // 使用验证
 		Session mailSession = Session.getInstance(props, new EmailAuthenticator(from, fromUserPassword));
 		// mailSession.setDebug(true);
@@ -53,7 +54,7 @@ public class SendMail {
 		MimeMessage message = new MimeMessage(mailSession);
 		message.setFrom(fromAddress);
 
-		String[] tos = to.split(",");
+		String[] tos = to.trim().split(",");
 		InternetAddress[] toAdds = new InternetAddress[tos.length];
 		InternetAddress toAddress = null;
 		for (int i = 0; i < tos.length; i++) {
