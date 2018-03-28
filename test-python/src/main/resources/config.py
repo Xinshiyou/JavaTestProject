@@ -6,7 +6,7 @@ import sys
 sys.path.insert(0, caffe_root + 'python')
 import caffe
 
-prefix = "/root/caffe_test/cnn/";
+prefix = '/root/caffe_test/cnn/';
 
 mean_filename=prefix+'mean.binaryproto'
 proto_data = open(mean_filename, "rb").read()

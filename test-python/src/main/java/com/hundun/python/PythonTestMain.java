@@ -1,5 +1,7 @@
 package com.hundun.python;
 
+import java.util.Properties;
+
 import org.python.core.PySystemState;
 import org.python.util.PythonInterpreter;
 
@@ -38,7 +40,17 @@ public final class PythonTestMain {
 	 * @return PythonInterpreter
 	 */
 	public PythonInterpreter getPythonInterpreter() {
+
+		Properties props = new Properties();
+		props.put("python.home", "/root/anaconda3/envs/python27/lib");
+		props.put("python.console.encoding", "UTF-8");
+		props.put("python.security.respectJavaAccessibility", "false");
+		props.put("python.import.site", "false");
+		Properties preprops = System.getProperties();
+
+		PythonInterpreter.initialize(preprops, props, new String[0]);
 		PythonInterpreter inter = new PythonInterpreter(null, getPySystemState());
 		return inter;
+
 	}
 }
