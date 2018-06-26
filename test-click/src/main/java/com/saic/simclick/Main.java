@@ -39,7 +39,7 @@ public class Main {
 		public void run() {
 
 			try {
-				Thread.sleep(Math.round(Math.random() * 1000 + 1000));
+				Thread.sleep(Math.round(Math.random() * 1000 + 500));
 			} catch (InterruptedException e) {
 				logger.info(e.getMessage());
 				System.out.println(e.getMessage());
@@ -53,26 +53,31 @@ public class Main {
 			}
 
 			Collections.shuffle(lst);
+			List<String> target = new ArrayList<>();
 			lst.forEach(url -> {
-
 				List<String> result = null;
 				try {
 					result = parserPages(url);
 				} catch (MalformedURLException e) {
 				}
-
 				int size = result.size();
 				int numbers = (int) Math.floor(Math.random() * size);
-				Collections.shuffle(result);
-
 				numbers = Math.min(numbers, size > 10 ? 10 : size);
 				result.subList(0, numbers).forEach(item -> {
-					es.submit(new ClickRunner(item));
+					target.add(item);
 				});
-
 			});
 
-			new Timer().schedule(new TimerTaskCls(), 60 * 60 * 1000 + (Math.round(Math.random() * 20 * 60)) * 1000);
+			Collections.shuffle(target);
+			target.forEach(item -> {
+				try {
+					Thread.sleep((int) Math.floor(Math.random() * 1000));
+				} catch (InterruptedException e) {
+				}
+				es.submit(new ClickRunner(item));
+			});
+
+			new Timer().schedule(new TimerTaskCls(), 30 * 60 * 1000 + (Math.round(Math.random() * 30 * 60)) * 1000);
 		}
 
 		private List<String> parserPages(String url) throws MalformedURLException {
