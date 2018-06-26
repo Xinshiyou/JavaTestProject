@@ -10,6 +10,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
@@ -154,6 +155,16 @@ public class Main {
 					es.shutdown();
 			}
 		});
+
+		while (true) {
+			int threadCount = ((ThreadPoolExecutor) es).getActiveCount();
+			System.out.println("Thread : active's thread size is :" + threadCount);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+			}
+		}
+
 	}
 
 	/**
