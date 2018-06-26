@@ -138,7 +138,7 @@ public class Main {
 			System.exit(1);
 		}
 
-		System.setProperty("webdriver.chrome.driver", "/home/xinshiyou/chrome/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "/root/chrome/chromedriver");
 		pageReg = args[0];
 		new Timer().schedule(new TimerTaskCls(), 1000);
 
@@ -161,7 +161,7 @@ public class Main {
 
 		String userAgent = AppForum.getAgents();
 		ChromeOptions options = new ChromeOptions();
-		options.setBinary("/usr/bin/google-chrome");
+		options.setBinary("/usr/bin/google-chrome-stable");
 		options.setExperimentalOption("prefs", prefs);
 		options.addArguments("--user-agent=" + userAgent);
 		options.addArguments("--no-sandbox");
