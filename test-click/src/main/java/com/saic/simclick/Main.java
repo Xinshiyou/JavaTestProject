@@ -174,17 +174,18 @@ public class Main {
 
 		HashMap<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("profile.default_content_settings", 2);
+		prefs.put("profile.default_content_setting_values", 2);
+		prefs.put("profile.managed_default_content_settings.images", 2);
 
 		String userAgent = AppForum.getAgents();
 		ChromeOptions options = new ChromeOptions();
 		options.setBinary("/usr/bin/google-chrome-stable");
 		options.setExperimentalOption("prefs", prefs);
 		options.addArguments("--user-agent=" + userAgent);
-		options.addArguments("--no-sandbox");
-		options.addArguments("--test-type");
-		options.addArguments("--headless");
-		options.addArguments("--disable-gpu");
+		options.addArguments("--no-sandbox", "--test-type");
+		options.addArguments("--disable-infobars", "--headless", "--disable-gpu");
 		options.addArguments("--enable-strict-powerful-feature-restrictions");
+		options.addArguments("--disable-plugins", "--disable-images", "--start-maximized");
 
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
