@@ -52,6 +52,7 @@ public class CrawlerMain {
 		chromeOptions.setCapability("javascriptEnabled", true);
 
 		ChromeDriver driver = new ChromeDriver(chromeOptions);
+		System.out.println("创建Driver成功，开始返回");
 
 		return driver;
 	}
@@ -65,7 +66,9 @@ public class CrawlerMain {
 		ChromeDriver driver = getDriver();
 		Document doc = null;
 		try {
+			System.out.println("开始登陆");
 			login(driver);
+			System.out.println("登陆成功");
 			driver.get(url);
 			doc = Jsoup.parse(driver.getPageSource());
 		} catch (Exception e) {
