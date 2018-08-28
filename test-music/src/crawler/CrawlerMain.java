@@ -32,7 +32,7 @@ public class CrawlerMain {
 	 */
 	public static ChromeDriver getDriver() {
 		
-		System.out.println("开始创建ChromeDriver");
+		System.out.println("begin to create driver");
 
 		HashMap<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("profile.default_content_settings", 2);
@@ -51,7 +51,7 @@ public class CrawlerMain {
 		options.setCapability("javascriptEnabled", true);
 
 		ChromeDriver driver = new ChromeDriver(options);
-		System.out.println("创建Driver成功，开始返回");
+		System.out.println("create chrome driver success");
 
 		return driver;
 	}
@@ -65,9 +65,9 @@ public class CrawlerMain {
 		ChromeDriver driver = getDriver();
 		Document doc = null;
 		try {
-			System.out.println("开始登陆");
+			System.out.println("begin to login");
 			login(driver);
-			System.out.println("登陆成功");
+			System.out.println("login success");
 			driver.get(url);
 			doc = Jsoup.parse(driver.getPageSource());
 		} catch (Exception e) {
