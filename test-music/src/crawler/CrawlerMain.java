@@ -92,11 +92,20 @@ public class CrawlerMain {
 
 		final String username = "username";
 		final String password = "password";
+		
+		System.out.println("Begin to get login url");		
 
 		driver.get("https://music.163.com/#/login");
+		FileUtils.writeStringToFile(new File("temp.txt"),driver.getPageSource(),"UTF-8",false);
+		
+		System.out.println("End of get login url");
+		
+		System.out.println("Begin to login");
 		driver.findElementById("ntp-login-netease").findElement(By.id("e")).sendKeys(username);
 		driver.findElementById("ntp-login-netease").findElement(By.id("epw")).sendKeys(password);
 		driver.findElementById("ntp-login-netease").findElement(By.cssSelector("a.js-primary.u-btn2.u-btn2-2")).click();
+		
+		System.out.println("End of login");
 
 	}
 
