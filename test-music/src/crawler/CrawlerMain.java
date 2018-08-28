@@ -11,6 +11,7 @@ import org.jsoup.nodes.Document;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class CrawlerMain {
 
@@ -48,10 +49,15 @@ public class CrawlerMain {
 		options.addArguments("--disable-infobars", "--headless", "--disable-gpu");
 		options.addArguments("--enable-strict-powerful-feature-restrictions");
 		options.addArguments("--disable-plugins", "--disable-images", "--start-maximized");
-		options.setCapability("javascriptEnabled", true);
+		
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		capabilities.setJavascriptEnabled(true);
 
-		ChromeDriver driver = new ChromeDriver(options);
-		System.out.println("create chrome driver success");
+		ChromeDriver driver = new ChromeDriver(capabilities);
+		driver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
+
+		// ChromeDriver driver = new ChromeDriver(options);
 
 		return driver;
 	}
