@@ -31,6 +31,8 @@ public class CrawlerMain {
 	 * @desc get chrome driver
 	 */
 	public static ChromeDriver getDriver() {
+		
+		System.out.println("开始创建ChromeDriver");
 
 		HashMap<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("profile.default_content_settings", 2);
@@ -46,12 +48,9 @@ public class CrawlerMain {
 		options.addArguments("--disable-infobars", "--headless", "--disable-gpu");
 		options.addArguments("--enable-strict-powerful-feature-restrictions");
 		options.addArguments("--disable-plugins", "--disable-images", "--start-maximized");
+		options.setCapability("javascriptEnabled", true);
 
-		ChromeOptions chromeOptions = new ChromeOptions();
-		chromeOptions.setCapability(ChromeOptions.CAPABILITY, options);
-		chromeOptions.setCapability("javascriptEnabled", true);
-
-		ChromeDriver driver = new ChromeDriver(chromeOptions);
+		ChromeDriver driver = new ChromeDriver(options);
 		System.out.println("创建Driver成功，开始返回");
 
 		return driver;
