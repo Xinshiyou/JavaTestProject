@@ -66,6 +66,7 @@ public class CrawlerMain {
 		Document doc = null;
 		try {
 			login(driver);
+			driver.get(url);
 			doc = Jsoup.parse(driver.getPageSource());
 		} catch (Exception e) {
 		} finally {
