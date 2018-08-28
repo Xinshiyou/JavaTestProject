@@ -26,6 +26,7 @@ public class CrawlerMain {
 		System.setProperty("webdriver.chrome.driver", "/root/chrome/chromedriver");
 		Document document = getDocumentJS("https://music.163.com/#/my");
 		System.out.println("Docuemnt:\n" + document);
+		
 		FileUtils.writeStringToFile(new File("./data.txt"), document.toString(), "UTF-8", false);
 	}
 
@@ -97,7 +98,11 @@ public class CrawlerMain {
 		System.out.println("Begin to get login url");		
 
 		driver.get("https://music.163.com/#/login");
+		try{
 		FileUtils.writeStringToFile(new File("temp.txt"),driver.getPageSource(),"UTF-8",false);
+		}catch(IOException e){
+			System.out.println("Exception:"+e.getMessage());
+		}
 		
 		System.out.println("End of get login url");
 		
