@@ -18,7 +18,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<kafka.version>0.11.0.0</kafka.version>
-		<mysql.verion>5.1.37</mysql.verion>
+		<mysql.verion>8.0.16</mysql.verion>
 		<project.verion>0.0.1-SNAPSHOT</project.verion>
 	</properties>
 
