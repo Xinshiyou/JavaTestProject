@@ -16,7 +16,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<mysql.version>5.1.45</mysql.version>
+		<mysql.version>8.0.16</mysql.version>
 		<cdh.version>cdh5.12.1</cdh.version>
 		<hbase.version>1.2.0</hbase.version>
 	</properties>
