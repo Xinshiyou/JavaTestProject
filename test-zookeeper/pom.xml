@@ -16,7 +16,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<zookeeper.version>3.5.1-alpha</zookeeper.version>
+		<zookeeper.version>3.5.5</zookeeper.version>
 		<zookeeper.client.version>0.10</zookeeper.client.version>
 	</properties>
 	<dependencies>
